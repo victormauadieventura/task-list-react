@@ -39,7 +39,7 @@ const App = () => {
   }
 
   const handleTaskDelition = (taskId) => {
-    const newTasks = tasks.filter(task => task !== taskId);
+    const newTasks = tasks.filter(task => task.id !== taskId);
 
     setTasks(newTasks);
   }
