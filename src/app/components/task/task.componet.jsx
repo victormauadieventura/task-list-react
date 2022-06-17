@@ -1,9 +1,10 @@
 import React from 'react';
+import {CgClose} from 'react-icons/cg';
 
 import "./task.component.scss"
 
 // task: similar to Angular's @input
-const Task = ({ task, handleTaskClick }) => {
+const Task = ({ task, handleTaskClick, handleTaskDelition }) => {
   return (
     <div 
       className="task-container" 
@@ -12,6 +13,15 @@ const Task = ({ task, handleTaskClick }) => {
     >
       <div className="task-title">
         { task.title }
+      </div>
+
+      <div className="buttons-container">
+        <button 
+          className="remove-task-button" 
+          onClick={() => handleTaskDelition(task.id)}
+        >
+          <CgClose />
+        </button>
       </div>
     </div>
   );

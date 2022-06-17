@@ -5,7 +5,7 @@ import Task from '../task/task.componet';
 
 // sfc: shortcut to create component structure
 // handleTaskClick: is called prop driven in React when the function is not used in the component
-const Tasks = ({ tasks, handleTaskClick }) => {
+const Tasks = ({ tasks, handleTaskClick, handleTaskDelition }) => {
   return ( 
     <>
       {
@@ -13,6 +13,7 @@ const Tasks = ({ tasks, handleTaskClick }) => {
           <Task 
             task={task}
             handleTaskClick={handleTaskClick}
+            handleTaskDelition={handleTaskDelition}
           />
         ))
       }
