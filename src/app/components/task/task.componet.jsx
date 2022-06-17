@@ -1,10 +1,17 @@
 import React from 'react';
-import {CgClose} from 'react-icons/cg';
+import { CgClose, CgInfo } from 'react-icons/cg';
+import { useHistory } from 'react-router-dom';
 
 import "./task.component.scss"
 
 // task: similar to Angular's @input
 const Task = ({ task, handleTaskClick, handleTaskDelition }) => {
+  const history = useHistory();
+
+  const handleTaskDetailsClick = () => {
+    history.push(`/${task.title}`);
+  }
+
   return (
     <div 
       className="task-container" 
@@ -18,6 +25,12 @@ const Task = ({ task, handleTaskClick, handleTaskDelition }) => {
       </div>
 
       <div className="buttons-container">
+        <button 
+          className="see-task-details-button" 
+          onClick={handleTaskDetailsClick}
+        >
+          <CgInfo />
+        </button>
         <button 
           className="remove-task-button" 
           onClick={() => handleTaskDelition(task.id)}

@@ -8,4 +8,9 @@ button {
   color: #444;
   background-color: chartreuse;
   cursor: pointer;
+  transform: all 0.5s ease;
+  &:hover {
+    color: chartreuse;
+    background-color: #444;
+  }
 }
