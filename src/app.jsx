@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { v4 as uuidv4 } from "uuid"
 import { BrowserRouter, Route } from "react-router-dom";
 
@@ -11,23 +12,18 @@ import './app.scss';
 
 const App = () => {
   // tasks: similar to a binding variable in Angular
-  const [tasks, setTasks] = useState([
-    {
-      id: '1',
-      title: 'Estudar React',
-      completed: false,
-    },
-    {
-      id: '2',
-      title: 'Estudar Angular',
-      completed: false,
-    },
-    {
-      id: '3',
-      title: 'Estutar Vue.js',
-      completed: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
+
+  // Equivalent in Angular to OnChanges, inside the [] could be sent a variable to be observed
+  useEffect(() => {
+    const fetchTasks = async () => {
+      const { data } = await axios.get("https://jsonplaceholder.cypress.io/todos?_limit=10");
+
+      setTasks(data);
+    }
+
+    fetchTasks();
+  }, []);
 
   const handleTaskAddition = (taskTitle) => {
     const task = {
